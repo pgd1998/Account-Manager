@@ -1,7 +1,7 @@
 import express from 'express';
 const router = express.Router();
 
-import { createExpense, updateExpense, deleteExpense, getAllExpenses, getTotalAmount, getTotalSpent } from '../controller/AccountController';
+import { createExpense, updateExpense, deleteExpense, getAllExpenses, getTotalAmount, getTotalSpent } from '../controller/AccountController.js';
 
 router.route("/").get(getAllExpenses).post(createExpense);
 router.route("/:id").delete(deleteExpense).patch(updateExpense);

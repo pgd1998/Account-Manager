@@ -1,6 +1,6 @@
 import express from "express";
-import connectDB from "./config/db";
-import expenseRoutes from "./routes/AccountRoutes";
+import connectDB from "./config/db.js";
+import expenseRoutes from "./routes/AccountRoutes.js";
 import cors from 'cors';
 
 connectDB();
