@@ -1,8 +1,8 @@
 import React from "react";
 
-const CancelButton = ()=>{
+const CancelButton = ({onClick})=>{
     return (
-        <button>Cancel</button>
+        <button onClick={onClick}>Cancel</button>
     )
 };
 

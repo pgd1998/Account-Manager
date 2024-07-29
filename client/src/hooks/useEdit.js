@@ -12,6 +12,7 @@ const useEdit = () => {
         try {
             const result = await editApi(expenseId, updatedData);
             setExpense(result);
+            console.log("in edit hook",result)
             return result;
         } catch (error) {
             setIsError(error.message || 'Error in edit API hook');
@@ -20,7 +21,7 @@ const useEdit = () => {
             setIsLoading(false);
         }
     };
-    return { isLoading, isError, expense,handleEdit };
+    return {isLoading,isError, handleEdit };
 }
 
 export default useEdit;

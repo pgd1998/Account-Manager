@@ -1,8 +1,8 @@
 import React from "react";
 
-const EditButton = ()=>{
+const EditButton = ({onClick})=>{
     return (
-        <button>Edit</button>
+        <button onClick={onClick}>Edit</button>
     )
 };
 
