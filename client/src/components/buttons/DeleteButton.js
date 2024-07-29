@@ -1,8 +1,8 @@
 import React from "react";
 
-const DeleteButton = ()=>{
+const DeleteButton = ({disabled,onClick})=>{
     return (
-        <button>Delete</button>
+        <button onClick={onClick} disabled={disabled}>Delete</button>
     )
 };
 
