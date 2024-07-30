@@ -1,4 +1,7 @@
-const deleteApi = async (expenseId) => {
+import { createAsyncThunk } from "@reduxjs/toolkit";
+
+const deleteApi = createAsyncThunk('expenses/delete',
+    async (expenseId,{rejectWithValue}) => {
     try {
         const response = await fetch(`/api/expenses/${expenseId}`, {
             method: 'DELETE',
@@ -10,11 +13,11 @@ const deleteApi = async (expenseId) => {
             const errorData = await response.json();
             throw new Error(errorData.message || "Expense not deleted");
         }
-        return response;
+        return expenseId;
     } catch (error) {
-        throw new Error(error.message || 'Delete api error');
+        return rejectWithValue(error.message || 'Delete api error');
 
     }
-}
+});
 
 export default deleteApi;

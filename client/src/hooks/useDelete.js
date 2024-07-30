@@ -1,22 +1,17 @@
 import { useState } from "react";
 import deleteApi from "../utils/deleteExpenseApi";
+import { useDispatch,useSelector } from "react-redux";
 
 const useDelete = () => {
-    const [isLoading, setIsLoading] = useState(false);
-    const [isError, setIsError] = useState(null);
+    const dispatch = useDispatch();
+    const isLoading=useSelector((state)=>state.expense.deleteStatus==='loading')
+    const isError=useSelector((state)=>state.expense.deleteError)
+
 
     const handleDelete = async (expenseId) => {
-        setIsLoading(true);
-        setIsError(null);
-        try {
-            const response = await deleteApi(expenseId);
-            return response;
-        } catch (error) {
-            setIsError(error.message || 'Error in delete API hook');
-            throw error;
-        } finally {
-            setIsLoading(false);
-        }
+        
+        dispatch( deleteApi(expenseId));
+            
     }
     return {isLoading,isError,handleDelete}
 }

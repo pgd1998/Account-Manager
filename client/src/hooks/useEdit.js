@@ -1,25 +1,16 @@
 import { useState } from "react";
 import editApi from "../utils/editExpenseApi";
-
+import { useSelector,useDispatch } from "react-redux";
 const useEdit = () => {
-    const [isLoading, setIsLoading] = useState(false);
-    const [isError, setIsError] = useState(null);
-    const [expense, setExpense] = useState();
+    const dispatch = useDispatch();
+    const isLoading=useSelector((state)=>state.expense.editStatus==='loading')
+    const isError = useSelector((state) => state.expense.editError)
 
     const handleEdit = async ({ expenseId, updatedData }) => {
-        setIsLoading(true);
-        setIsError(null);
-        try {
-            const result = await editApi(expenseId, updatedData);
-            setExpense(result);
-            console.log("in edit hook",result)
-            return result;
-        } catch (error) {
-            setIsError(error.message || 'Error in edit API hook');
-            throw error;
-        } finally {
-            setIsLoading(false);
-        }
+        
+       
+            dispatch(editApi(expenseId, updatedData));
+           
     };
     return {isLoading,isError, handleEdit };
 }

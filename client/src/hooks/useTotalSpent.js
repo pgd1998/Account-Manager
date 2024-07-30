@@ -1,23 +1,20 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import totalSpentApi from "../utils/getTotalSpentApi";
-
+import { useSelector,useDispatch } from "react-redux";
 const useTotalSpent =  () => {
-    const [isSpent, setIsSpent] = useState(0);
+    const dispatch = useDispatch();
+    const isLoading=useSelector((state)=>state.expense.getAllStatus==='loading')
+    const isError=useSelector((state)=>state.expense.getAllError)
+    const spent = useSelector((state)=>state.expense.spent);
     useEffect(() => {
         const handleTotalSpent = async () => {
-        try {
-            const result = await totalSpentApi();
-            console.log('spent',result)
-            setIsSpent(result);
-        } catch (error) {
-            throw error;
-
-        }
+        dispatch( totalSpentApi());
+            
         }
         handleTotalSpent();
-    },[])
+    },[dispatch])
     
-    return isSpent;
+    return spent;
 }
 
 export default useTotalSpent;

@@ -1,4 +1,7 @@
-const editApi = async (expenseId,updatedData) => {
+import { createAsyncThunk } from "@reduxjs/toolkit";
+
+const editApi = createAsyncThunk('expenses/edit',
+    async (expenseId, updatedData,{rejectWithValue}) => {
     try {
         const response = await fetch(`/api/expenses/${expenseId}`, {
             method: 'PATCH',
@@ -15,8 +18,8 @@ const editApi = async (expenseId,updatedData) => {
         console.log("edit api", result);
         return result;
     } catch (error) {
-        throw new Error(error.message || 'Edit api error');
+        return rejectWithValue(error.message || 'Edit api error');
     }
-}
+})
 
 export default editApi;

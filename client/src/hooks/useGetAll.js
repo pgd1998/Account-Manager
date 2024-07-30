@@ -1,25 +1,20 @@
 import React, { useEffect, useState } from "react";
 import getAllApi from "../utils/getAllExpensesApi";
-const useGetAll = () => {
-    const [isLoading, setIsLoading] = useState(false);
-    const [isError, setIsError] = useState(null);
-    const [expenses, setIsExpenses] = useState([]);
+import { useDispatch,useSelector } from "react-redux";
 
-    const handleGetAll = async () => {
-        setIsLoading(true);
-        setIsError(null);
-        try {
-            const response = await getAllApi();
-            setIsExpenses(response);
-        } catch (error) {
-            throw new Error(error.message || 'hook error');
-        } finally {
-            setIsLoading(false);
-        }
-    }
+const useGetAll = () => {
+    const dispatch = useDispatch();
+    const isLoading=useSelector((state)=>state.expense.getAllStatus==='loading')
+    const isError=useSelector((state)=>state.expense.getAllError)
+    const expenses = useSelector((state)=>state.expense.items);
+    const editStatus = useSelector((state) => state.expense.editStatus);
+    const deleteStatus = useSelector((state) => state.expense.deleteStatus);
+    const createStatus = useSelector((state) => state.expense.createStatus);
+
+    
     useEffect(() => {
-        handleGetAll();
-    },[])
+         dispatch( getAllApi());
+    },[dispatch,editStatus,deleteStatus,createStatus])
     return { isLoading, isError, expenses };
 }
 

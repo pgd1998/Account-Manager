@@ -1,6 +1,9 @@
 import React from "react";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 
-const getAllApi = async () => {
+
+const getAllApi =createAsyncThunk('expenses/getAll',
+    async (_,{rejectWithValue}) => {
     try {
         const response = await fetch('/api/expenses', {
             method: 'GET',
@@ -15,8 +18,8 @@ const getAllApi = async () => {
         const result = await response.json();
         return result;
     } catch (error) {
-        throw new Error(error || 'Unable to get the expenses!');
+        return rejectWithValue(error || 'Unable to get the expenses!');
     }
-}
+})
 
 export default getAllApi;
