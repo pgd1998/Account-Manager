@@ -41,7 +41,8 @@ const ExpenseCard = ({ expense }) => {
                     (
                         <>
                 <p>{expense.name}</p>
-                <p>{expense.amount}</p>
+                            <p>{expense.amount}</p>
+                            <p>{ expense.totalAmount}</p>
                             <EditButton onClick={ onClickEdit} />
                             <DeleteButton disabled={isLoading} onClick={OnClickdelete} />
                             </>
