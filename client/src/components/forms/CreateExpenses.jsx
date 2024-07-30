@@ -37,6 +37,8 @@ const CreateExpenses = () => {
                     <DeleteButton/>
             </div>
             </form>
+                        {isError && <div style={{ color: 'red' }}>Error creating expense: {isError.message}</div>}
+
             </div>
     )
 }
