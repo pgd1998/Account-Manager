@@ -40,7 +40,7 @@ export const deleteExpense = async (req,res) => {
 // Get total amount
 export const getTotalAmount = async (req, res) => {
     try {
-        const account = await Account.findOne({});
+        const account = 500;
         if (!account) {
             return res.status(404).json({ message: "Account not found" });
         }

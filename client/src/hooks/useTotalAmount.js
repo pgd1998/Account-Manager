@@ -10,7 +10,7 @@ const useTotalAmount =  () => {
             throw error
         }
     }
-    return handleTotalAmount;
+    return {handleTotalAmount};
 }
 
 export default useTotalAmount;

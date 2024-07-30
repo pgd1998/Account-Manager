@@ -5,8 +5,7 @@ const { Schema } = mongoose;
 const AccountSchema = new Schema(
     {
         name: { type: String, required: true },
-        amount: { type: Number, required: true },
-        totalAmount: { type: Number, default: 100 }
+        amount: { type: Number, required: true }
     }
 );
 // AccountSchema.pre('save', function(next) {

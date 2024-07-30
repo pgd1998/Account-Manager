@@ -1,18 +1,23 @@
+import { useEffect, useState } from "react";
 import totalSpentApi from "../utils/getTotalSpentApi";
 
 const useTotalSpent =  () => {
-
-    const handleTotalSpent = async () => {
+    const [isSpent, setIsSpent] = useState(0);
+    useEffect(() => {
+        const handleTotalSpent = async () => {
         try {
             const result = await totalSpentApi();
             console.log('spent',result)
-            return result;
+            setIsSpent(result);
         } catch (error) {
             throw error;
 
         }
-    }
-    return handleTotalSpent;
+        }
+        handleTotalSpent();
+    },[])
+    
+    return isSpent;
 }
 
 export default useTotalSpent;

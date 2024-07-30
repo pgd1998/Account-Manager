@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { SaveButton, CancelButton, EditButton, DeleteButton } from '../buttons';
 import useCreate from '../../hooks/useCreateExpense';
 
-const CreateExpenses = () => {
+const CreateExpenses = ({onClick}) => {
     const [isName,setIsName] = useState('');
     const [isAmount, setIsAmount] = useState(0);
     const { isLoading, isError, handleCreate } = useCreate();
@@ -32,9 +32,7 @@ const CreateExpenses = () => {
             <input type='number' id='amount' value={isAmount} onChange={(e) => setIsAmount(e.target.value)} required />
                 <div>
                     <SaveButton disabled={ isLoading} />
-                    <CancelButton />
-                    <EditButton />
-                    <DeleteButton/>
+                    <CancelButton onClick={onClick}/>
             </div>
             </form>
                         {isError && <div style={{ color: 'red' }}>Error creating expense: {isError.message}</div>}

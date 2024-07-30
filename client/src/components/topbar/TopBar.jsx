@@ -2,6 +2,7 @@ import React, { useCallback, useState } from 'react';
 import CreateExpenses from '../forms/CreateExpenses';
 import useTotalAmount from '../../hooks/useTotalAmount';
 import useTotalSpent from '../../hooks/useTotalSpent';
+import { useNavigate } from 'react-router-dom';
 
 const TopBar = () => {
     const [showCreateExpenses, setShowCreateExpenses] = useState(false);
@@ -10,35 +11,31 @@ const TopBar = () => {
     const [totalSpent, setIsTotalSpent] = useState(0);
     const handleTotalAmount = useTotalAmount();
     const handleTotalSpent = useTotalSpent();
+    const navigate = useNavigate();
 
     const handleAddClick = () => {
-        setShowCreateExpenses(!showCreateExpenses);
+        setShowCreateExpenses(true);
+    }
+    const handleCancelClick = () => {
+        setShowCreateExpenses(false);
     }
     const handleBankClick = async () => {
+        navigate('/bank');
         
-        try {
-            const amount = await handleTotalAmount();
-            const spent = await handleTotalSpent();
-            console.log(spent)
-            setIsTotalAmount(amount);
-            setIsTotalSpent(spent);
-            setShowBank(!showBank);
-        } catch (error) {
-            console.error("Error fetching totals:", error);
-        }
-        
+    }
+
+    const handleHomeClick = () => {
+        navigate('/');
     }
     
     return (
         <div>
+            <button onClick={handleHomeClick}>Home</button>
             <button onClick={handleAddClick}>Add</button>
             <button onClick={handleBankClick}>
                 Bank
             </button>
-            {showBank&&
-                <p>Total Amount: {totalAmount}, Total Spent: {totalSpent}</p>
-            }
-                {showCreateExpenses && <CreateExpenses />}
+            {showCreateExpenses && <CreateExpenses onClick={handleCancelClick} />}
         </div>
     )
 }
