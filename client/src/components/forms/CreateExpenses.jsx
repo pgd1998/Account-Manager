@@ -19,6 +19,9 @@ const CreateExpenses = ({onClick}) => {
             console.log('Expense created successfully:', result);
         } catch (error) {
             console.error('Error creating expense:', error); // Log the error details
+         } finally {
+             setIsName('');
+             setIsAmount('')
         }
         
     }

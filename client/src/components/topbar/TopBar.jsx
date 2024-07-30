@@ -16,7 +16,8 @@ const TopBar = () => {
     const handleAddClick = () => {
         setShowCreateExpenses(true);
     }
-    const handleCancelClick = () => {
+    const handleCancelClick = (e) => {
+        e.preventDefault();
         setShowCreateExpenses(false);
     }
     const handleBankClick = async () => {

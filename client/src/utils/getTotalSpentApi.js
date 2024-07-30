@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 const totalSpentApi = createAsyncThunk('expenses/spent',
-    async ({rejectWithValue}) => {
+    async (_,{rejectWithValue}) => {
         try {
             const response = await fetch('/api/expenses/total/spent', {
                 method: 'GET',
