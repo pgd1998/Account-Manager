@@ -2,6 +2,8 @@ import { useState } from "react";
 import { EditButton, DeleteButton, SaveButton,CancelButton } from "../buttons";
 import useDelete from "../../hooks/useDelete";
 import useEdit from "../../hooks/useEdit";
+import './expenseCard.css'
+
 const ExpenseCard = ({ expense }) => {
     const { isLoading, isError, handleDelete } = useDelete();
     const { isLoading:editLoading,isError:editError,handleEdit } = useEdit();
@@ -12,7 +14,8 @@ const ExpenseCard = ({ expense }) => {
         handleDelete(expense._id);
     }
 
-    const onClickEdit = () => {
+    const onClickEdit = (e) => {
+        e.preventDefault();
         setIsEditing(!isEditing);
     }
 
@@ -39,13 +42,12 @@ const ExpenseCard = ({ expense }) => {
                 </form>)
                     :
                     (
-                        <>
-                <p>{expense.name}</p>
-                            <p>{expense.amount}</p>
-                            <p>{ expense.totalAmount}</p>
-                            <EditButton onClick={ onClickEdit} />
-                            <DeleteButton disabled={isLoading} onClick={OnClickdelete} />
-                            </>
+                <div className="expense-card">
+                    <p>{expense.name}</p>
+                    <p>{expense.amount}</p>
+                    <EditButton onClick={ onClickEdit} />
+                    <DeleteButton disabled={isLoading} onClick={OnClickdelete} />
+                </div>
             )}
         </div>
     )
