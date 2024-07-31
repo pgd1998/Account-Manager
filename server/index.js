@@ -7,7 +7,12 @@ connectDB();
 const app = express();
 
 app.use(express.json());
-// app.use(cors());
+
+const corsOptions = {
+    origin: ['https://poorvithgowda.com','https://www.poorvithgowda.com'],
+    optionsSuccessStatus:200
+}
+app.use(cors(corsOptions));
 
 app.use('/api/expenses', expenseRoutes);
 
