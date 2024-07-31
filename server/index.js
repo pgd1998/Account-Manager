@@ -9,7 +9,7 @@ const app = express();
 app.use(express.json());
 
 const corsOptions = {
-    origin: ['https://poorvithgowda.com','https://www.poorvithgowda.com'],
+    origin: ['https://poorvithgowda.com'],
     optionsSuccessStatus:200
 }
 app.use(cors(corsOptions));
