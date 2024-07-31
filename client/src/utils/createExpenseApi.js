@@ -47,8 +47,8 @@ const createApi = createAsyncThunk('expenses/create',
         const result = await response.json();
         return result;
     } catch (error) {
-        console.error('There was a problem with fetch ops', error); 
-        return rejectWithValue('There was a problem with fetch ops', error);
+        console.error('There was a problem with creating expense', error); 
+        return rejectWithValue('There was a problem with creating expense', error);
     }
 })
 
