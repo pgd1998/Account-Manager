@@ -18,7 +18,7 @@ const CreateExpenses = ({onClick}) => {
             const result = await handleCreate(expenseData);
             console.log('Expense created successfully:', result);
         } catch (error) {
-            console.error('Error creating expense:', error); // Log the error details
+            console.error('Error creating expensess:', error.message); // Log the error details
          } finally {
              setIsName('');
              setIsAmount('')
@@ -38,7 +38,7 @@ const CreateExpenses = ({onClick}) => {
                     <CancelButton onClick={onClick}/>
             </div>
             </form>
-                        {isError && <div style={{ color: 'red' }}>Error creating expense: {isError.message}</div>}
+                        {isError && <div style={{ color: 'red' }}>Error creating expense: {isError}</div>}
 
             </div>
     )
