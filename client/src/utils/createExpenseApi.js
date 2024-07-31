@@ -28,12 +28,13 @@
 
 import React from "react";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-
+import config from "./config"; 
+    
 const createApi = createAsyncThunk('expenses/create',
     async (expenseData,{rejectWithValue}) => {
     try {
         
-        const response = await fetch('/api/expenses', {
+        const response = await fetch(`${config.apiBaseUrl}/expenses`, {
             method: 'POST',
             headers: {
                 'Content-Type':'application/json'

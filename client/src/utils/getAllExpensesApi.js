@@ -1,11 +1,11 @@
 import React from "react";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-
+import config from "./config";
 
 const getAllApi =createAsyncThunk('expenses/getAll',
     async (_,{rejectWithValue}) => {
     try {
-        const response = await fetch('/api/expenses', {
+        const response = await fetch(`${config.apiBaseUrl}/expenses`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'

@@ -1,9 +1,9 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-
+import config from "./config";
 const editApi = createAsyncThunk('expenses/edit',
     async (expenseId, updatedData,{rejectWithValue}) => {
     try {
-        const response = await fetch(`/api/expenses/${expenseId}`, {
+        const response = await fetch(`${config.apiBaseUrl}/expenses/${expenseId}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'

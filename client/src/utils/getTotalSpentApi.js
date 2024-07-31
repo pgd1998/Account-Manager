@@ -1,9 +1,10 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import config from "./config";
 
 const totalSpentApi = createAsyncThunk('expenses/spent',
     async (_,{rejectWithValue}) => {
         try {
-            const response = await fetch('/api/expenses/total/spent', {
+            const response = await fetch(`${config.apiBaseUrl}/expenses/total/spent`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'

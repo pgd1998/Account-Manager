@@ -1,9 +1,10 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import config from "./config";
 
 const deleteApi = createAsyncThunk('expenses/delete',
     async (expenseId,{rejectWithValue}) => {
     try {
-        const response = await fetch(`/api/expenses/${expenseId}`, {
+        const response = await fetch(`${config.apiBaseUrl}/expenses/${expenseId}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
