@@ -8,14 +8,7 @@ const AccountSchema = new Schema(
         amount: { type: Number, required: true }
     }
 );
-// AccountSchema.pre('save', function(next) {
-//     if (this.isNew) {
-//         this.totalAmount = this.amount;
-//     } else {
-//         this.totalAmount += this.amount;
-//     }
-//     next();
-// });
+
 const Account = mongoose.model("Account", AccountSchema);
 
 export default Account;
