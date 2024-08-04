@@ -1,6 +1,7 @@
 import express from "express";
 import connectDB from "./config/db.js";
 import expenseRoutes from "./routes/AccountRoutes.js";
+import userRoutes from "./routes/UserRoutes.js";
 import cors from 'cors';
 
 connectDB();
@@ -15,6 +16,7 @@ app.use(express.json());
 // app.use(cors(corsOptions));
 
 app.use('/api/expenses', expenseRoutes);
+app.use('/api/user', userRoutes);
 
 const PORT = process.env.PORT || 5000;
 console.log("Server starting...");
