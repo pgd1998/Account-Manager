@@ -3,7 +3,7 @@ import config from "./config";
 const editApi = createAsyncThunk('expenses/edit',
     async (expenseId, updatedData,{rejectWithValue}) => {
     try {
-        const response = await fetch(`${config.apiBaseUrl}/expenses/${expenseId}`, {
+        const response = await fetch(`${config.apiBaseUrl}/expenses/${encodeURIComponent(expenseId)}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'

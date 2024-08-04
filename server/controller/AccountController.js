@@ -69,3 +69,23 @@ export const getAllExpenses = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 }
+
+
+export const getSearch = async (req, res) => {
+    try {
+        const searchTerm = req.query.term;
+        if (!searchTerm) {
+            return res.status(400).json({message:"Search Term is required"})
+        }
+
+        const regex = new RegExp(searchTerm, 'i');
+
+        const expenses = await Account.find({name:regex});
+        if (expenses.length===0) {
+            return res.status(404).json({message:`${searchTerm} not present!`})
+        }
+        res.status(200).json(expenses);
+    } catch (error) {
+        res.status(500).json({message:error.message})
+    }
+}

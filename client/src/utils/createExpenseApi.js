@@ -26,7 +26,6 @@
 // export default createApi;
 
 
-import React from "react";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import config from "./config"; 
     

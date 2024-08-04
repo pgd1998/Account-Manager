@@ -1,7 +1,7 @@
 import express from 'express';
 const router = express.Router();
 
-import { createExpense, updateExpense, deleteExpense, getAllExpenses, getTotalAmount, getTotalSpent } from '../controller/AccountController.js';
+import { createExpense, updateExpense, deleteExpense, getAllExpenses, getTotalAmount, getTotalSpent,getSearch } from '../controller/AccountController.js';
 
 router.route("/").get(getAllExpenses).post(createExpense);
 router.route("/:id").delete(deleteExpense).patch(updateExpense);
@@ -12,5 +12,7 @@ router.route("/total/amount")
 // Route to get the total spent
 router.route("/total/spent")
     .get(getTotalSpent);
+
+router.route("/search").get(getSearch)
 
 export default router;

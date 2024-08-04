@@ -24,16 +24,21 @@ const ExpenseCard = ({ expense }) => {
         setEditedExpense((prev)=>({...prev,[name]:value}))
     }
     
-    const OnSubmit = async (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault();
-        await handleEdit({ expenseId: expense._id, updatedData: editedExpense });
-        setIsEditing(false);
+        try {
+            await handleEdit({ expenseId: expense._id, updatedData: editedExpense });
+            setIsEditing(false);
+        } catch (error) {
+            setIsEditing(false);
+            console.error("Edit failed:", error);
+        }
     }
 
     return (
         <div>
             {
-                isEditing ? (<form onSubmit={OnSubmit}>
+                isEditing ? (<form onSubmit={onSubmit}>
                     <input type="text" name="name" value={editedExpense.name} onChange={OnChange} />
                     <input type="number" name="amount" value={editedExpense.amount} onChange={OnChange} />
                     <SaveButton disabled={editLoading} />

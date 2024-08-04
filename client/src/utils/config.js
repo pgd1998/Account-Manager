@@ -1,5 +1,5 @@
 const config = {
-    apiBaseUrl:'https://www.poorvithgowda.com/api',
+    apiBaseUrl:'/api',
 };
 
 export default config;

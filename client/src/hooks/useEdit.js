@@ -7,10 +7,11 @@ const useEdit = () => {
     const isError = useSelector((state) => state.expense.editError)
 
     const handleEdit = async ({ expenseId, updatedData }) => {
-        
-       
+        try {
             dispatch(editApi(expenseId, updatedData));
-           
+        } catch (error) {
+            throw error;
+        }
     };
     return {isLoading,isError, handleEdit };
 }

@@ -3,7 +3,7 @@ import useGetAll from "../../hooks/useGetAll";
 import ExpenseCard from "./expensesCard";
 const ExpenseList = () => {
     const { isLoading, isError, expenses } = useGetAll();
-
+    
     return (
         <div>
             {expenses.map((expense) => (

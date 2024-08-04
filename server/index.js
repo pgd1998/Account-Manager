@@ -8,11 +8,11 @@ const app = express();
 
 app.use(express.json());
 
-const corsOptions = {
-    origin: ['https://poorvithgowda.com'],
-    optionsSuccessStatus:200
-}
-app.use(cors(corsOptions));
+// const corsOptions = {
+//     origin: ['https://poorvithgowda.com','https://www.poorvithgowda.com'],
+//     optionsSuccessStatus:200
+// }
+// app.use(cors(corsOptions));
 
 app.use('/api/expenses', expenseRoutes);
 

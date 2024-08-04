@@ -3,6 +3,7 @@ import CreateExpenses from '../forms/CreateExpenses';
 import useTotalAmount from '../../hooks/useTotalAmount';
 import useTotalSpent from '../../hooks/useTotalSpent';
 import { useNavigate } from 'react-router-dom';
+import Search from '../search/Search';
 
 const TopBar = () => {
     const [showCreateExpenses, setShowCreateExpenses] = useState(false);
@@ -31,6 +32,7 @@ const TopBar = () => {
     
     return (
         <div>
+            {/* <Search/> */}
             <button onClick={handleHomeClick}>Home</button>
             <button onClick={handleAddClick}>Add</button>
             <button onClick={handleBankClick}>
